@@ -75,7 +75,7 @@ const login = async function (req, res) {
         password=password.trim();
 
         //checking user existance in database with email
-        let user = await authorModel.findOne({ email})
+        let user = await userModel.findOne({ email})
         if (!user) {
             return res.status(404).send({ status: false, msg: "no user found with this email"})
         }

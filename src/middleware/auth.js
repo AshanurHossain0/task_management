@@ -6,7 +6,7 @@ const authentication = async function (req, res , next) {
         if (!token) return res.status(401).send({ status: false, msg: "Token is not provided" })
 
 
-        jwt.verify(token,process.env.SECRET, function (err, decodedToken) {
+        jwt.verify(token,"task_manage23", function (err, decodedToken) {
             if (err) {
                 return res.status(403).send({status:false, msg: err.name });
             } else {

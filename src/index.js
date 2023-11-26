@@ -9,13 +9,14 @@ const app=express();
 
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect("mongodb+srv://ashanur:nurasha2000@ashanurdb.x6brlcb.mongodb.net/task_manage")
 .then(_=>console.log("Database Connection Successful"))
 .catch(err=>console.log(err));
 
 
 app.use("/user",userRoutes);
 app.use("/task",taskRoutes);
+app.use("/*",(req,res)=>res.status(404).send({status:false,message:"Invalid Path"}));
 
 app.listen(process.env.PORT,(err)=>{
     if(err) console.log(err);

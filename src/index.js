@@ -2,7 +2,6 @@ const userRoutes=require("./routes/userRoutes")
 const taskRoutes=require("./routes/taskRoutes");
 
 
-require("dotenv").config();
 const mongoose=require("mongoose");
 const express=require("express");
 const app=express();
@@ -18,7 +17,7 @@ app.use("/user",userRoutes);
 app.use("/task",taskRoutes);
 app.use("/*",(req,res)=>res.status(404).send({status:false,message:"Invalid Path"}));
 
-app.listen(process.env.PORT,(err)=>{
+app.listen(3000,(err)=>{
     if(err) console.log(err);
     else console.log("Server is connected...");
 })

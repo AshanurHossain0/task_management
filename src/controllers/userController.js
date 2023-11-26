@@ -87,7 +87,7 @@ const login = async function (req, res) {
             exp: Math.floor(Date.now() / 1000) + 30*24*3600,
             iat: Date.now(), userId: user["_id"],
         };
-        let token = jwt.sign(payload, process.env.SECRET);
+        let token = jwt.sign(payload, "task_manage23");
         return res.status(200).send({ status: true, token})
     }
     catch(err){

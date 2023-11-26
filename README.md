@@ -9,6 +9,7 @@
 ### User Route
 #### User registration
 - http://localhost:3000/user/register
+- method : POST
 - request body
   ```yaml
   {
@@ -34,6 +35,7 @@
 
 #### User login
 - http://localhost:3000/user/login
+- method : POST
 - request body
   ```yaml
   {
@@ -49,3 +51,76 @@
       }
   }
 ```
+### Task Route
+#### Create task
+- http://localhost:3000/task
+- method : POST
+- request header must have "x-auth-token" key and value should be the token
+- request body
+  ```yaml
+  {
+    "title":"develop a ticket booking site",
+    "description":"a ticket booking site development",
+    "dueDate":"10/01/2024",
+    "assignedUsers":["6562dcdaa661e1937977aac6"]
+  }
+  ```
+- success response
+  ```yaml
+  {
+    "status": true,
+    "message": "Success"
+  }
+  ```
+  #### Get all tasks
+- http://localhost:3000/task
+- method : GET
+- request header must have "x-auth-token" key and value should be the token
+- success response
+  ```yaml
+  {
+    "status": true,
+    "message": "Success",
+    "data": [
+        {
+            "_id": "6562dbf9a661e1937977aabe",
+            "title": "develop a recipe site",
+            "description": "a recipe site development",
+            "creator": "65620d9a607faffc164b0b1a",
+            "assignedUsers": [
+                "65620d9a607faffc164b0b1a"
+            ],
+            "dueDate": "30/01/2024",
+            "isCompleted": false,
+            "isDeleted": false,
+            "__v": 0
+        },
+        {
+            "_id": "6562e5a71178b1e70a341fc5",
+            "title": "develop a e-commerce site",
+            "description": "a e-commerce site development",
+            "creator": "65620d9a607faffc164b0b1a",
+            "assignedUsers": [
+                "6562dcdaa661e1937977aac6"
+            ],
+            "dueDate": "30/02/2024",
+            "isCompleted": false,
+            "isDeleted": false,
+            "__v": 0
+        },
+        {
+            "_id": "65631f9378533eb96a32b28a",
+            "title": "develop a ticket booking site",
+            "description": "a ticket booking site development",
+            "creator": "65620d9a607faffc164b0b1a",
+            "assignedUsers": [
+                "6562dcdaa661e1937977aac6"
+            ],
+            "dueDate": "10/01/2024",
+            "isCompleted": false,
+            "isDeleted": false,
+            "__v": 0
+        }
+    ]
+  }
+  ```

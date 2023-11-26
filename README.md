@@ -75,7 +75,6 @@
   #### Get all tasks
 - http://localhost:3000/task
 - method : GET
-- request header must have "x-auth-token" key and value should be the token
 - success response
   ```yaml
   {
@@ -123,4 +122,74 @@
         }
     ]
   }
+  ```
+#### Get a single task
+- http://localhost:3000/task/<task_id>
+- method : GET
+- success response
+  ```yaml
+    {
+      "status": true,
+      "message": "Success",
+      "data": {
+          "_id": "6562dbf9a661e1937977aabe",
+          "title": "develop a recipe site",
+          "description": "a recipe site development",
+          "creator": "65620d9a607faffc164b0b1a",
+          "assignedUsers": [
+              "65620d9a607faffc164b0b1a"
+          ],
+          "dueDate": "30/01/2024",
+          "isCompleted": false,
+          "isDeleted": false,
+          "__v": 0
+      }
+    }
+  ```
+#### Update a task
+- http://localhost:3000/task/<task_id>
+- method : PUT
+- request header must have "x-auth-token" key and value should be the token
+- one or more than one user can be assigned
+- request body
+  ```yaml
+    {
+      "title":"your choosen title",
+      "description":"your choosen description",
+      "usersToBeAssigned":["65620d9a607faffc164b0b1a"],
+      "dueDate": "02/01/2024",
+      "isCompleted": true,
+    }
+  ```
+- success response
+  ```yaml
+    {
+      "status": true,
+    "message": "Success",
+    "data": {
+        "_id": "6562dbf9a661e1937977aabe",
+        "title": "develop a recipe site",
+        "description": "a recipe site development",
+        "creator": "65620d9a607faffc164b0b1a",
+        "assignedUsers": [
+            "65620d9a607faffc164b0b1a"
+        ],
+        "dueDate": "30/01/2024",
+        "isCompleted": false,
+        "isDeleted": false,
+        "__v": 0
+      }
+    }
+  ```
+#### Delete a task
+- http://localhost:3000/task/<task_id>
+- method : DELETE
+- this is actually soft delete
+- request header must have "x-auth-token" key and value should be the token
+- success response
+  ```yaml
+    {
+      "status": true,
+      "message": "Success"
+    }
   ```
